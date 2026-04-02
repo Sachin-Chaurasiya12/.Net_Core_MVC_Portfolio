@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Registerform";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="/css/styleSheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="form-card">
+            <h2>CREATE ACCOUNT</h2>
+
+            <form id="Registerform" method="post">
+                <div class="input-group">
+                    <input type="text" placeholder="Your Name" id="name" name="Name" required>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" placeholder="Your Email" id="username" name="UserName" required>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Password" id="password" name="Password" required>
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Repeat your password" id="repeated" required>
+                    <i class="fa-solid fa-key"></i>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I agree all statements in <u>Terms of service</u></label>
+                </div>
+
+                <button type="submit" class="signup-btn">SIGN UP</button>
+            </form>
+
+            <p class="login-link">Have already an account? <a asp-controller="Dashboard" asp-action="login">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="/js/registerscript.js"></script>
+</body>
+   
+</html>
+
