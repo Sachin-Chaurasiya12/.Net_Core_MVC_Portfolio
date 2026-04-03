@@ -68,12 +68,7 @@ header h1 {
     margin-bottom: 20px;
 }
 
-/* Charts */
-.charts {
-    display: flex;
-    gap: 20px;
-    height: 300px; /* 🔥 REQUIRED */
-}
+
 
 canvas {
     background: white;
@@ -138,9 +133,18 @@ canvas {
     border-radius: 10px;
     max-height: 300px;
 }
-.charts canvas {
-    flex: 1;
+.charts {
+    display: flex;
+    gap: 20px;
+    height: 300px;
+    width: 100%; /* ✅ ADD */
 }
+
+    .charts canvas {
+        flex: 1;
+        height: 100% !important;
+        width: 100% !important; /* ✅ ADD */
+    }
 @keyframes grow {
     from {
         width: 0;
