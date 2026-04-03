@@ -107,3 +107,33 @@ h2 {
         font-weight: bold;
         text-decoration: underline;
     }
+/* This targets the wrapper you are using */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc; /* The underline */
+    display: flex;
+    align-items: center;
+}
+
+    .input-group input {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 10px 0;
+        background: transparent;
+        font-size: 16px;
+    }
+
+    /* Style for the icons on the right */
+    .input-group i {
+        color: #888;
+        margin-left: 10px;
+    }
+
+/* Specific fix for the Date input to make it look like a text placeholder */
+input[type="date"] {
+    color: #888;
+    text-transform: uppercase;
+    font-family: inherit;
+}

@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
     <link rel="stylesheet" href="/css/styleSheet.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="main-container">
@@ -40,15 +40,21 @@
                     <i class="fa-solid fa-key"></i>
                 </div>
 
-                <div class="checkbox-group">
-                    <input type="checkbox" id="terms">
-                    <label for="terms">I agree all statements in <u>Terms of service</u></label>
+                <div class="input-group">
+                    <input type="text" placeholder="Mobile Number" id="mobileNumber" name="phonenumber" required>
+                    <i class="fa-solid fa-phone"></i>
                 </div>
 
+                <div class="input-group">
+                    <input type="date" id="dob" name="DateOfBirth" required>
+                    <label for="dob">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </label>
+                </div>
                 <button type="submit" class="signup-btn">SIGN UP</button>
             </form>
 
-            <p class="login-link">Have already an account? <a asp-controller="Dashboard" asp-action="login">Login here</a></p>
+            <p class="login-link">Have already an account? <a asp-controller="Account" asp-action="login">Login here</a></p>
         </div>
     </div>
 

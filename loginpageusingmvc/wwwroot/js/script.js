@@ -1,8 +1,8 @@
 ﻿document.getElementById("loginForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("Email").value;
+    const password = document.getElementById("Password").value;
 
     // Basic validation
     if (!email || !password) {
@@ -11,21 +11,21 @@
     }
 
     // Simulate login
-    fetch("/Dashboard/login", {
+    fetch("/Account/login", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            username: email,
-            password: password
+            Email: email,
+            Password: password
         })
     })
         .then(res => res.json())
         .then(data => {
             if (data.success) {
-                alert("login successfully");
+                window.location.href = "Dashboard/index";
             }
             else {
-                alert("wrong credientials");
+                alert(data.message);
             }
         })
 });

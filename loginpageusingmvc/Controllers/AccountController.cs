@@ -1,4 +1,6 @@
-﻿using loginpageusingmvc.Data;
+﻿using Humanizer;
+using loginpageusingmvc.Data;
+using loginpageusingmvc.DTOs;
 using loginpageusingmvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
@@ -6,11 +8,11 @@ using System.Linq;
 
 namespace loginpageusingmvc.Controllers
 {
-    public class DashboardController : Controller
+    public class AccountController : Controller
     {
         private readonly AppDbContext _context;
 
-        public DashboardController(AppDbContext context)
+        public AccountController(AppDbContext context)
         {
             _context = context;
         }
@@ -25,38 +27,43 @@ namespace loginpageusingmvc.Controllers
 
         // POST: Handle Login
         [HttpPost]
-        public IActionResult Login([FromBody]UserLogin model)
+        public IActionResult Login([FromBody]UserReadDTO model)
         {
-            var user = _context.Users
-                .FirstOrDefault(u => u.Username == model.Username
-                                  && u.Password == model.Password);
+            var user = _context.Users.FirstOrDefault(u => u.Username == model.Email);
 
             if (user != null)
             {
-                return Json(new { success = true });
+                if (user.Password.Equals(model.Password)){
+                    return Json(new { success = true });
+                }
+            }
+            if (model == null)
+            {
+                return Json(new { success = false, message = "Model is null" });
             }
 
-            return Json(new { success = false });
+            return Json(new { success = false ,message="User does'nt exist"});
         }
-
         [HttpGet]
         public IActionResult Registerform()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Register([FromBody] RegisterModel model)
+        public IActionResult Register([FromBody] UserCreateDto model)
         {
-            if (_context.Users.Any(u => u.Username == model.UserName))
+            if (_context.Users.Any(u => u.Username == model.Email))
             {
                 return Json(new { success = false, message= "Users already Exist"});
             }
 
             var newUser = new UserLogin
-            {
+            {   
                 Name = model.Name,
-                Username = model.UserName,
-                Password = model.Password
+                Username = model.Email,
+                Password = model.Password,
+                Dob = model.Dob,
+                phonenumber = model.Phonenumber
             };
             _context.Users.Add(newUser);
             _context.SaveChanges();
