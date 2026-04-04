@@ -17,7 +17,8 @@
         body: JSON.stringify({
             Email: email,
             Password: password
-        })
+        }),
+        credentials: 'same-origin'
     })
         .then(res => res.json())
         .then(data => {

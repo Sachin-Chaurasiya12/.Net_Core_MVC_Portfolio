@@ -22,14 +22,28 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <h2>PORTFOLIO</h2>
-            
+
+            <div class="profile-section">
+                <a asp-controller="Dashboard" asp-action="EditProfile">
+                    <img src="@(Model?.ProfileImagePath ?? "/uploads/Default-welcomer.png")" alt="Profile" class="avatar-img" />
+                </a>
+                <p class="profile-name">@Model?.Name</p>
+            </div>
+
             <ul>
-                <li class="active">Dashboard</li>
+                <li onclick="location.href='@Url.Action("Index", "Dashboard")'" class="active">Dashboard</li>
                 <li>Projects</li>
                 <li>Skills</li>
                 <li>Contact</li>
+
+                <li class="logout-item">
+                    <a asp-controller="Account" asp-action="Logout" style="color: inherit; text-decoration: none; display: block; width: 100%;">
+                        Logout
+                    </a>
+                </li>
             </ul>
-        </aside>
+            </aside>
+
 
         <!-- Main -->
         <main class="main">

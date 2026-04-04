@@ -15,7 +15,23 @@ namespace loginpageusingmvc.Controllers
         [HttpGet("index")]
         public IActionResult Index()
         {
-            return View();
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("login","Account");
+            }
+            var user = _context.Users.Find(userId.Value);
+            return View(user);
+        }
+        [HttpGet("EditProfile")]
+        public IActionResult EditProfile()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null) return RedirectToAction("Login", "Account");
+
+            var user = _context.Users.Find(userId.Value);
+            return View(user);
         }
     }
 }

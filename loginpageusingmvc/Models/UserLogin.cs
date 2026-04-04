@@ -8,5 +8,6 @@
         public required string Password { get; set; }
         public DateOnly Dob { get; set; }
         public string? phonenumber { get; set; }
+        public string? ProfileImagePath { get; set; }
     }
 }

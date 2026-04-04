@@ -137,3 +137,16 @@ input[type="date"] {
     text-transform: uppercase;
     font-family: inherit;
 }
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .right {
+        display: none;
+    }
+
+    .left {
+        padding: 30px;
+    }
+}

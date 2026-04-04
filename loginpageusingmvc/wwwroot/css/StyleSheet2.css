@@ -1,0 +1,116 @@
+﻿body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Ensures body takes full height */
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #fff;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* ADD THESE THREE LINES */
+    position: relative;
+    z-index: 10;
+    overflow: visible;
+}
+
+/* Ensure the button specifically stays on top */
+.btn {
+    position: relative;
+    z-index: 20;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+h2 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid #4CAF50;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .profile-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+.back-arrow {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+    .back-arrow:hover {
+        color: #388E3C;
+    }
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+    .btn:hover {
+        background-color: #388E3C;
+    }
+footer {
+    position: relative;
+    margin-top: auto; /* Pushes footer to the bottom of the page */
+    z-index: 1; /* Keeps it below the profile card */
+    background: #fff; /* Or whatever color matches your footer */
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px 15px;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    input[type="text"] {
+        width: 90%;
+    }
+}

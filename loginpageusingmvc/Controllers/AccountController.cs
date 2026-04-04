@@ -33,6 +33,7 @@ namespace loginpageusingmvc.Controllers
             if (user != null)
             {
                 if (user.Password.Equals(model.Password)){
+                    HttpContext.Session.SetInt32("UserId",user.Id);
                     return Json(new { success = true });
                 }
             }
@@ -70,6 +71,12 @@ namespace loginpageusingmvc.Controllers
             return Json(new { success = true });
         }
         // Dashboard page after login
+        [HttpGet]
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("login", "Account");
+        }
         public IActionResult Index()
         {
             return View();

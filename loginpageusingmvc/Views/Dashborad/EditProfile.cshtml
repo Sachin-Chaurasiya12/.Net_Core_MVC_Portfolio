@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["title"] = "Edit Profile";
+}
+@model loginpageusingmvc.Models.UserLogin
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/css/StyleSheet2.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Back arrow -->
+        <a asp-controller="Dashboard" asp-action="Index" class="back-arrow">&#8592; Back</a>
+
+        <h2>Edit Profile</h2>
+
+        <form asp-action="UpdateProfile" asp-controller="Profile"method="post" enctype="multipart/form-data">
+            <label for="fileInput">
+                <img src="@(Model?.ProfileImagePath ?? "/uploads/Default-welcome")"
+                     onerror="this.onerror=null;this.src='/uploads/Default-welcomer.png';"
+                     class="profile-img" />
+            </label>
+            <input type="file" id="fileInput" name="file" style="display:none;" />
+
+            <br /><br />
+
+            <input type="text" name="name" value="@Model?.Name" placeholder="Your Name" />
+
+            @* <br /><br /> *@
+
+            <button type="submit" class="btn">Update Profile</button>
+        </form>
+
+    </div>
+    
+<script>
+    // Live preview for selected image
+    document.getElementById('fileInput').addEventListener('change', function(e){
+        if(e.target.files && e.target.files[0]){
+            const reader = new FileReader();
+            reader.onload = function(ev){
+                document.querySelector('.profile-img').src = ev.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+</script>
+</body>
+</html>
