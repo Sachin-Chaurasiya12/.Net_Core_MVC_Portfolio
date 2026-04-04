@@ -15,7 +15,17 @@
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            animation: {
+                duration: 2000, // 2 seconds for a smooth entrance
+                easing: 'easeOutQuart'
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
         }
     });
 
@@ -29,7 +39,17 @@
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            animation: {
+                duration: 2000, // 2 seconds for a smooth entrance
+                easing: 'easeOutQuart'
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
         }
     });
 

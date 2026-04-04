@@ -55,6 +55,34 @@ namespace loginpageusingmvc.Controllers
 
             return RedirectToAction("index","Dashboard");
         }
+        [HttpPost("DeleteProfile")]
+        public async Task<IActionResult> DeleteProfile()
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("login", "Account");
+            }
+
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null) return NotFound();
+
+            if (!string.IsNullOrEmpty(user.ProfileImagePath) && !user.ProfileImagePath.Contains("Default-welcomer.png"))
+            {
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", user.ProfileImagePath.TrimStart('/'));
+
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+            }
+            user.ProfileImagePath = "/uploads/Default-welcomer.png";
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("index", "Dashboard");
+
+        }
 
     }
 }
