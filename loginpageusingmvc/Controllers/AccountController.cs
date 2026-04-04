@@ -40,7 +40,7 @@ namespace loginpageusingmvc.Controllers
             if (model == null)
             {
                 return Json(new { success = false, message = "Model is null" });
-            }
+            } 
 
             return Json(new { success = false ,message="User does'nt exist"});
         }
@@ -50,7 +50,7 @@ namespace loginpageusingmvc.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Register([FromBody] UserCreateDto model)
+        public IActionResult Registerform([FromBody]UserCreateDto model)
         {
             if (_context.Users.Any(u => u.Username == model.Email))
             {
@@ -58,7 +58,7 @@ namespace loginpageusingmvc.Controllers
             }
 
             var newUser = new UserLogin
-            {   
+            {
                 Name = model.Name,
                 Username = model.Email,
                 Password = model.Password,
