@@ -8,5 +8,6 @@ namespace loginpageusingmvc.Data
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options) { }
 
         public DbSet<UserLogin> Users { get; set; }
+
     }
 }

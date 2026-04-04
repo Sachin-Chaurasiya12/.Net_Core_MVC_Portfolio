@@ -20,25 +20,50 @@ body {
     background: #2f2c3d;
     color: white;
     padding: 20px;
-    transition: 0.3s;
 }
 
     .sidebar h2 {
         margin-bottom: 30px;
     }
 
+/* Profile Section */
 .profile {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.avatar {
+.avatar-img {
     width: 80px;
     height: 80px;
-    background: gray;
     border-radius: 50%;
-    margin: auto;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 10px auto;
+    border: 2px solid #6c63ff;
+    background-color: #ccc; /* fallback if image fails */
 }
+
+.profile input[type="file"] {
+    display: block;
+    margin: 10px auto;
+    font-size: 12px;
+    color: white;
+}
+
+.profile button {
+    display: block;
+    margin: 10px auto;
+    padding: 6px 12px;
+    border: none;
+    background: #6c63ff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .profile button:hover {
+        background: #5750d3;
+    }
 
 .sidebar ul {
     list-style: none;
@@ -48,7 +73,6 @@ body {
         padding: 12px;
         margin: 10px 0;
         cursor: pointer;
-        transition: 0.3s;
     }
 
         .sidebar ul li:hover,
@@ -63,19 +87,29 @@ body {
     padding: 20px;
 }
 
-/* Header */
 header h1 {
     margin-bottom: 20px;
 }
 
-
-
+/* Charts */
 canvas {
     background: white;
-    padding: 10px;
     border-radius: 10px;
+    max-height: 300px;
+}
+
+.charts {
+    display: flex;
+    gap: 20px;
+    height: 300px;
     width: 100%;
 }
+
+    .charts canvas {
+        flex: 1;
+        height: 100% !important;
+        width: 100% !important;
+    }
 
 /* Cards */
 .cards {
@@ -91,12 +125,7 @@ canvas {
     padding: 20px;
     border-radius: 10px;
     font-size: 20px;
-    transition: transform 0.3s;
 }
-
-    .card:hover {
-        transform: translateY(-5px);
-    }
 
     .card span {
         display: block;
@@ -126,27 +155,4 @@ canvas {
         height: 100%;
         background: #6c63ff;
         border-radius: 5px;
-        animation: grow 2s ease;
     }
-canvas {
-    background: white;
-    border-radius: 10px;
-    max-height: 300px;
-}
-.charts {
-    display: flex;
-    gap: 20px;
-    height: 300px;
-    width: 100%; /* ✅ ADD */
-}
-
-    .charts canvas {
-        flex: 1;
-        height: 100% !important;
-        width: 100% !important; /* ✅ ADD */
-    }
-@keyframes grow {
-    from {
-        width: 0;
-    }
-}

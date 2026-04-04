@@ -17,7 +17,6 @@ namespace loginpageusingmvc.Controllers
             _context = context;
         }
 
-
         // GET: Show Login Page
         [HttpGet]
         public IActionResult Login()
