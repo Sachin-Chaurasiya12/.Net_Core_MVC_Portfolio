@@ -1,5 +1,6 @@
 ﻿using loginpageusingmvc.Data;
 using loginpageusingmvc.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace loginpageusingmvc.Controllers

@@ -8,5 +8,7 @@
         public string? Phonenumber { get; set; }
 
         public DateOnly Dob { get; set; }
+
+        public string? Role { get; set; }
     }
 }

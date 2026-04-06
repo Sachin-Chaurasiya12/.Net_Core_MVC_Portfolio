@@ -68,7 +68,8 @@ namespace loginpageusingmvc.Controllers
                 Username = model.Email,
                 Password = hashpassword,
                 Dob = model.Dob,
-                phonenumber = model.Phonenumber
+                phonenumber = model.Phonenumber,
+                Role = "User"
             };
             _context.Users.Add(newUser);
             _context.SaveChanges();

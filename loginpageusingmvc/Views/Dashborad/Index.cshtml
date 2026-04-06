@@ -21,7 +21,7 @@
 
         <!-- Sidebar -->
         <aside class="sidebar">
-            <h2>PORTFOLIO</h2>
+            <h2>SACHIN<br />PORTFOLIO</h2>
 
             <div class="profile-section">
                 <a asp-controller="Dashboard" asp-action="EditProfile">
@@ -32,7 +32,7 @@
 
             <ul>
                 <li onclick="location.href='@Url.Action("Index", "Dashboard")'" class="active">Dashboard</li>
-                <li>Projects</li>
+                <li onclick="location.href='@Url.Action("projectIndex","Projects")'">Projects</li>
                 <li>Skills</li>
                 <li>Contact</li>
 

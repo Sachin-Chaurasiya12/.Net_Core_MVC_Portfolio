@@ -1,0 +1,64 @@
+﻿@model loginpageusingmvc.Models.Project
+
+@{
+    ViewData["Title"] = "edit";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project</title>
+    <link rel="stylesheet" href="/css/Projectedit.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Edit Project</h2>
+
+        <form asp-action="edit" asp-controller="Projects" method="post" enctype="multipart/form-data">
+
+            <!-- Hidden ID -->
+            <input type="hidden" asp-for="ProjectId" />
+
+            <!-- Name -->
+            <label>Project Name</label>
+            <input asp-for="Title" />
+
+            <!-- Description -->
+            <label>Description</label>
+            <textarea asp-for="Description"></textarea>
+
+            <!-- GitHub -->
+            <label>GitHub Link</label>
+            <input asp-for="GithubUrl" />
+
+            <!-- Image Upload -->
+            <label>Change Image</label>
+            <input type="file" name="imageFile" id="imageInput" />
+
+            <!-- Current Image Preview -->
+            <div class="preview">
+                <img id="previewImage" src="@Model.ImagePath" />
+            </div>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <script>
+        const input = document.getElementById('imageInput');
+        const preview = document.getElementById('previewImage');
+
+        input.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+            }
+        });
+    </script>
+
+</body>
+</html>
