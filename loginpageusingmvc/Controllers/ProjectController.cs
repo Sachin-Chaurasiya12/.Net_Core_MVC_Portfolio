@@ -14,20 +14,8 @@ namespace loginpageusingmvc.Controllers
         [HttpGet("projectIndex")]
         public IActionResult ProjectIndex()
         {
-            var userId = HttpContext.Session.GetInt32("UserId");
 
-            string? role = "";
-
-            if (userId != null)
-            {
-                var user = _context.Users.FirstOrDefault(u => u.Id == userId);
-                role = user?.Role;
-            }
-
-            ViewBag.Role = role;
-            var projects = _context.UserProjects.ToList();
-
-            return View(projects);
+            return View();
         }
     }
 }

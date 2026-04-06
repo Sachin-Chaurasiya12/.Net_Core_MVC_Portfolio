@@ -21,16 +21,6 @@
         </svg>
         Back
     </a>
-    @if (ViewBag.Role == "ADMIN")
-    {
-        <a asp-controller="Projects" asp-action="projectedit" method="Get "class="Edit-btn">
-            Edit
-            <svg class="rotate-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-        </a>
-    }
     <section class="projects-section">
         <h1 class="section-title">My Projects</h1>
         <div class="projects-grid">
@@ -68,6 +58,7 @@
                     </a>
                 </div>
             </div>
+
 
         </div>
         <br />
