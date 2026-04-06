@@ -5,6 +5,10 @@ using loginpageusingmvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using System.Linq;
+using BCrypt.Net;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Identity.Client;
 
 namespace loginpageusingmvc.Controllers
 {
@@ -32,7 +36,7 @@ namespace loginpageusingmvc.Controllers
 
             if (user != null)
             {
-                if (user.Password.Equals(model.Password)){
+                if (BCrypt.Net.BCrypt.Verify(model.Password,user.Password)){
                     HttpContext.Session.SetInt32("UserId",user.Id);
                     return Json(new { success = true });
                 }
@@ -56,12 +60,13 @@ namespace loginpageusingmvc.Controllers
             {
                 return Json(new { success = false, message= "Users already Exist"});
             }
-
+            string pass = model.Password;
+            string hashpassword = BCrypt.Net.BCrypt.HashPassword(pass,workFactor:12);
             var newUser = new UserLogin
             {
                 Name = model.Name,
                 Username = model.Email,
-                Password = model.Password,
+                Password = hashpassword,
                 Dob = model.Dob,
                 phonenumber = model.Phonenumber
             };
