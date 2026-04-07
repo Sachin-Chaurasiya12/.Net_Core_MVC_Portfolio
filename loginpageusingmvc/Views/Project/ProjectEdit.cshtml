@@ -24,7 +24,7 @@
                 <p>Update your portfolio project details below.</p>
             </div>
 
-            <form asp-controller="Projects" asp-action="Edit" method="post" enctype="multipart/form-data" class="edit-form">
+            <form asp-controller="Project" asp-action="Edit" method="post" enctype="multipart/form-data" class="edit-form">
                 <input type="hidden" name="ProjectId" value="@Model?.ProjectId" />
 
                 <div class="input-group">
@@ -45,16 +45,20 @@
                 <div class="input-group">
                     <label><i class="fas fa-image"></i> Project Cover Image</label>
                     <div class="file-upload-wrapper">
-                        <input type="file" name="imageFile" id="imageInput" accept="image/*" />
+                        <input type="file" name="image" id="imageInput" accept="image/*" />
                         <div class="custom-file-label">Choose a new file...</div>
                     </div>
                 </div>
 
-                <div class="preview-section">
-                    <label>Current Preview</label>
-                    <div class="preview-window">
-                        <img id="previewImage" src="@(string.IsNullOrEmpty(Model?.ImagePath) ? "/uploads/images.png" : "/uploads/" + Model.ImagePath)"alt ="Preview" />
-                    </div>
+                <div class="preview-window">
+                    @if (!string.IsNullOrEmpty(Model?.ImagePath))
+                    {
+                        <img id="previewImage" src="/uploads/@Model.ImagePath" alt="Project Preview" />
+                    }
+                    else
+                    {
+                        <img id="previewImage" src="/uploads/placeholder.png" alt="No Image Uploaded" />
+                    }
                 </div>
 
                 <div class="button-group">

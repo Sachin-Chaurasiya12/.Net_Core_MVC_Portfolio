@@ -4,6 +4,7 @@
 @{
     Layout = null;
 }
+@model IEnumerable<loginpageusingmvc.Models.Project>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,41 +35,26 @@
     <section class="projects-section">
         <h1 class="section-title">My Projects</h1>
         <div class="projects-grid">
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="project-card hidden">
+                        <div class="project-image">
+                            <img src="/uploads/@(string.IsNullOrEmpty(item.ImagePath) ? "placeholder.png" : item.ImagePath)" alt="@item.Title">
 
-            <div class="project-card hidden">
-                <div class="project-image">
-                    <img src="/uploads/system-design-for-ecommerce.webp" alt="E-commerce Backend">
-
-                </div>
-                <div class="project-content">
-                    <h3>.Net core MVC Portfolio</h3>
-                    <p>A .Net based portfolio website featuring MVC and Introduction</p>
-                    <div class="tags">
-                        <span>Html,Css </span><span>.Net Core</span><span>javascript</span>
                     </div>
-                    <a href="https://github.com/Sachin-Chaurasiya12/.Net_Core_MVC_Portfolio" target="_blank" class="github-link">
-                        View Source Code
-                    </a>
-                </div>
-            </div>
+                    <div class="project-content">
+                        <h3>@item.Title</h3>
+                        <p>@item.Description</p>
 
-            <div class="project-card hidden">
-                <div class="project-image">
-                    <img src="/uploads/portfolio-button-speech-bubble-banner-label-portfolio-vector.jpg" alt="Portfolio">
-
-                </div>
-                <div class="project-content">
-                    <h3>E-commerce Backend System</h3>
-                    <p>A scalable REST API built with Spring Boot, featuring JWT authentication, order management, and SQL integration.</p>
-                    <div class="tags">
-                        <span>Spring Boot</span><span>MySQL</span><span>JWT</span>
+                        <a href="@item.GithubUrl" target="_blank" class="github-link">
+                            View Source Code
+                        </a>
                     </div>
-                    <a href="https://github.com/Sachin-Chaurasiya12/Ecommerce_Backend_System" target="_blank" class="github-link">
-                        View Source Code
-                    </a>
                 </div>
-            </div>
-
+                }
+            }
 
         </div>
         <br />
