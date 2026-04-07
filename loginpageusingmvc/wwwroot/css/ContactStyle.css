@@ -1,0 +1,118 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-block;
+    color: #94a3b8;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+    .back-btn:hover {
+        color: #38bdf8;
+    }
+
+/* Contact Box */
+.contact-box {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    min-height: 600px;
+    align-content:stretch;
+}
+
+/* Sidebar Info */
+.contact-info {
+    background: #1e3a8a;
+    padding: 60px;
+    color: white;
+    height: 100%;
+}
+
+    .contact-info h2 {
+        margin-bottom: 15px;
+    }
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    gap: 15px;
+}
+
+/* Form Styling */
+.contact-form {
+    padding: 40px;
+    background: #ffffff05;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+    input:focus, textarea:focus {
+        border-color: #38bdf8;
+    }
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #38bdf8;
+    border: none;
+    border-radius: 8px;
+    color: #0f172a;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+    .submit-btn:hover {
+        background: #7dd3fc;
+        transform: translateY(-2px);
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-box {
+        grid-template-columns: 1fr;
+    }
+}

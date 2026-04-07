@@ -37,8 +37,7 @@ body {
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    /* Ensure it behaves as a block to respect margin auto */
-    display: block;
+    display: grid;
     margin: 0 auto 10px auto;
     border: 2px solid #6c63ff;
     background-color: #ccc;
@@ -81,7 +80,7 @@ body {
 
     .sidebar ul li {
         padding: 12px;
-        margin: 10px 0;
+        margin: 10px;
         cursor: pointer;
     }
 
@@ -195,9 +194,10 @@ canvas {
     .sidebar {
         width: 100%;
         height: auto;
-        display: flex;
+        display: block;
         justify-content: space-between;
         align-items: center;
+        overflow:hidden;
     }
 
         .sidebar h2 {
@@ -207,12 +207,25 @@ canvas {
         .sidebar ul {
             display: flex;
             gap: 10px;
+            overflow-x: auto;
         }
 
             .sidebar ul li {
                 padding: 8px;
                 font-size: 12px;
             }
+                .sidebar ul li.logout-item {
+                    margin-top: 0 !important;
+                    display: inline-block; /* Changed from grid */
+                    flex-shrink: 0;
+                }
+        .sidebar ul {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px;
+        }
 }
 @media (max-width: 768px) {
     .charts {
@@ -234,11 +247,6 @@ canvas {
 @media (max-width: 600px) {
     .cards {
         grid-template-columns: 1fr;
-    }
-}
-@media (max-width: 768px) {
-    .main {
-        padding: 10px;
     }
 }
 @media (max-width: 768px) {

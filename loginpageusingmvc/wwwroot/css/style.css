@@ -97,7 +97,7 @@ button {
     }
 
     .right {
-        display: none;
+        display:grid;
     }
 
     .left {

@@ -1,0 +1,198 @@
+﻿/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body */
+body {
+    background: #0f172a; /* dark navy */
+    color: #e2e8f0;
+}
+
+/* Section */
+.skills-section {
+    padding: 60px 10%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+    color: white;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    .filter-buttons button {
+        margin: 5px;
+        padding: 10px 20px;
+        border: none;
+        background: #1e293b;
+        color: #e2e8f0;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: 0.3s;
+    }
+
+        .filter-buttons button.active,
+        .filter-buttons button:hover {
+            background: #1e3a8a; /* navy */
+            color: white;
+        }
+
+/* Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80%, 1fr));
+    gap: 25px;
+}
+
+/* Card */
+.skill-card {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+    .skill-card:hover {
+        transform: translateY(-5px);
+    }
+
+/* Skill Name */
+.skill-name {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* Progress Bar */
+.progress {
+    background: #334155;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 10px;
+    width: 0;
+    background: #1e3a8a; /* navy */
+    transition: width 1.5s ease-in-out;
+}
+
+/* ================= GitHub Section ================= */
+
+.github-section {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.github-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.github-subtitle {
+    margin-bottom: 30px;
+    opacity: 0.7;
+}
+
+/* GitHub Card */
+.github-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background: #1e293b;
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    flex-wrap: wrap;
+}
+
+/* Icon */
+.github-left i {
+    font-size: 80px;
+}
+
+/* Content */
+.github-right h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.github-right p {
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+/* Stats */
+.github-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.stat-number {
+    font-size: 22px;
+    font-weight: bold;
+    display: block;
+}
+
+.stat-label {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Button */
+.github-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #1e3a8a; /* navy */
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .github-btn:hover {
+        background: #3b82f6; /* lighter navy */
+    }
+
+/* ================= Back Button ================= */
+
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #1e293b;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+    .back-btn:hover {
+        background: #1e3a8a;
+        color: white;
+        transform: translateY(-2px);
+    }

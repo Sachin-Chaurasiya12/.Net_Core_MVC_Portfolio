@@ -32,9 +32,9 @@
 
             <ul>
                 <li onclick="location.href='@Url.Action("Index", "Dashboard")'" class="active">Dashboard</li>
-                <li onclick="location.href='@Url.Action("projectIndex","Projects")'">Projects</li>
-                <li>Skills</li>
-                <li>Contact</li>
+                <li onclick="location.href='@Url.Action("projectIndex","Project")'">Projects</li>
+                <li onclick="location.href='@Url.Action("Skillspage","Skills")'">Skills</li>
+                <li onclick="location.href='@Url.Action("ContactPage","Contact")'">Contact</li>
 
                 <li class="logout-item">
                     <a asp-controller="Account" asp-action="Logout" style="color: inherit; text-decoration: none; display: block; width: 100%;">

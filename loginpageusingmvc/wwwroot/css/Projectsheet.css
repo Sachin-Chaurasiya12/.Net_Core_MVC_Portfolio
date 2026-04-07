@@ -170,6 +170,10 @@ body {
     z-index: 100;
     float:right;
 }
+    .Edit-btn svg {
+        transform: rotate(-180deg);
+        transition: transform 0.3s ease;
+    }
 
     .Edit-btn:hover {
         background: var(--white);
@@ -259,14 +263,14 @@ body {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
         text-align: center;
     }
 
     .back-btn {
-        position: relative;
+        position: absolute;
         margin-bottom: 20px;
     }
 }

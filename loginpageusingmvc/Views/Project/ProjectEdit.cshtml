@@ -1,9 +1,10 @@
-﻿@model loginpageusingmvc.Models.Project
-
-@{
+﻿@{
     ViewData["Title"] = "edit";
 }
-
+@{
+    Layout = null;
+}
+@model loginpageusingmvc.Models.Project
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,41 +12,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Project</title>
     <link rel="stylesheet" href="/css/Projectedit.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
 
-    <div class="container">
-        <h2>Edit Project</h2>
-
-        <form asp-action="edit" asp-controller="Projects" method="post" enctype="multipart/form-data">
-
-            <!-- Hidden ID -->
-            <input type="hidden" asp-for="ProjectId" />
-
-            <!-- Name -->
-            <label>Project Name</label>
-            <input asp-for="Title" />
-
-            <!-- Description -->
-            <label>Description</label>
-            <textarea asp-for="Description"></textarea>
-
-            <!-- GitHub -->
-            <label>GitHub Link</label>
-            <input asp-for="GithubUrl" />
-
-            <!-- Image Upload -->
-            <label>Change Image</label>
-            <input type="file" name="imageFile" id="imageInput" />
-
-            <!-- Current Image Preview -->
-            <div class="preview">
-                <img id="previewImage" src="@Model.ImagePath" />
+    <div class="edit-container">
+        <div class="glass-card">
+            <div class="card-header">
+                <h2><i class="fas fa-edit"></i> Edit Project</h2>
+                <p>Update your portfolio project details below.</p>
             </div>
 
-            <button type="submit">Save Changes</button>
-        </form>
+            <form asp-controller="Projects" asp-action="Edit" method="post" enctype="multipart/form-data" class="edit-form">
+                <input type="hidden" name="ProjectId" value="@Model?.ProjectId" />
+
+                <div class="input-group">
+                    <label><i class="fas fa-tag"></i> Project Name</label>
+                    <input type="text" asp-for="Title" placeholder="Enter project title..." required />
+                </div>
+
+                <div class="input-group">
+                    <label><i class="fas fa-align-left"></i> Description</label>
+                    <textarea asp-for="Description" placeholder="What did you build?"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label><i class="fab fa-github"></i> GitHub Link</label>
+                    <input type="url" asp-for="GithubUrl" placeholder="https://github.com/..." />
+                </div>
+
+                <div class="input-group">
+                    <label><i class="fas fa-image"></i> Project Cover Image</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" name="imageFile" id="imageInput" accept="image/*" />
+                        <div class="custom-file-label">Choose a new file...</div>
+                    </div>
+                </div>
+
+                <div class="preview-section">
+                    <label>Current Preview</label>
+                    <div class="preview-window">
+                        <img id="previewImage" src="@(string.IsNullOrEmpty(Model?.ImagePath) ? "/uploads/images.png" : "/uploads/" + Model.ImagePath)"alt ="Preview" />
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="save-btn">Save Changes</button>
+                    <a asp-action="ProjectIndex" class="cancel-btn">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script>

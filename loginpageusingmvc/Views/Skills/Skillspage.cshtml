@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Skills";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <link rel="stylesheet" href="/css/SkillStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <a asp-controller="Dashboard" asp-action="Index" class="back-btn">
+    <i class="fas fa-arrow-left"></i>
+    Back to Dashboard
+</a>
+    <section class="skills-section">
+        <h1 class="section-title">My Skills</h1>
+
+        <!-- Filter -->
+        <div class="filter-buttons">
+            <button class="active" onclick="filterSkills('all')">All</button>
+            <button onclick="filterSkills('frontend')">Frontend</button>
+            <button onclick="filterSkills('backend')">Backend</button>
+            <button onclick="filterSkills('tools')">Tools</button>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid">
+
+            <div class="skill-card" data-category="frontend">
+                <div class="skill-name">HTML</div>
+                <div class="progress"><div class="progress-bar" data-skill="90"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="frontend">
+                <div class="skill-name">CSS</div>
+                <div class="progress"><div class="progress-bar" data-skill="85"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="frontend">
+                <div class="skill-name">JavaScript</div>
+                <div class="progress"><div class="progress-bar" data-skill="50"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="frontend">
+                <div class="skill-name">React.js</div>
+                <div class="progress"><div class="progress-bar" data-skill="50"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="backend">
+                <div class="skill-name">.NET Core</div>
+                <div class="progress"><div class="progress-bar" data-skill="85"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="backend">
+                <div class="skill-name">Spring Boot</div>
+                <div class="progress"><div class="progress-bar" data-skill="75"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="tools">
+                <div class="skill-name">Git & GitHub</div>
+                <div class="progress"><div class="progress-bar" data-skill="80"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="backend">
+                <div class="skill-name">Java</div>
+                <div class="progress"><div class="progress-bar" data-skill="90"></div></div>
+            </div>
+
+        </div>
+    </section>
+    <!-- GitHub Section -->
+    <section class="github-section">
+        <h2 class="github-title">My GitHub</h2>
+        <p class="github-subtitle">Explore my projects and contributions</p>
+
+        <div class="github-card">
+            <div class="github-left">
+                <i class="fab fa-github"></i>
+            </div>
+
+            <div class="github-right">
+                <h3>Sachin Chaurasiya</h3>
+                <p>Backend Developer | .NET Core | Spring Boot</p>
+
+                <div class="github-stats">
+                    <div>
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Repositories</span>
+                    </div>
+                    <div>
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Commits</span>
+                    </div>
+                    <div>
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                </div>
+
+                <a href="https://github.com/Sachin-Chaurasiya12" target="_blank" class="github-btn">
+                    View GitHub Profile
+                </a>
+            </div>
+        </div>
+    </section>
+    <script src="/js/skillScript.js"></script>
+</body>
+</html>
