@@ -10,6 +10,8 @@ namespace loginpageusingmvc.Data
         public DbSet<UserLogin> Users { get; set; }
         public DbSet<Project> UserProjects { get; set; }
         public DbSet<Skills> Skills { get; set; }
+        public DbSet<Contact> Message { get; set; }
+
 
     }
 }
