@@ -30,10 +30,8 @@ namespace loginpageusingmvc.Controllers
                 return RedirectToAction("login", "Account");
             }
             ViewBag.Role = user.Role;
-            var userProjects = _context.UserProjects
-                               .Where(p => p.UserId == userId)
-                               .ToList();
-            return View(userProjects);
+            var allProjects = _context.UserProjects.ToList();
+            return View(allProjects);
         }
         [HttpGet]
         public IActionResult ProjectEdit()

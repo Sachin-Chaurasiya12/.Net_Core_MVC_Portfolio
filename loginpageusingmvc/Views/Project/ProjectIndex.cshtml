@@ -4,7 +4,7 @@
 @{
     Layout = null;
 }
-@model IEnumerable<loginpageusingmvc.Models.Project>
+@model List<loginpageusingmvc.Models.Project>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,8 +35,6 @@
     <section class="projects-section">
         <h1 class="section-title">My Projects</h1>
         <div class="projects-grid">
-            @if (Model != null && Model.Any())
-            {
                 @foreach (var item in Model)
                 {
                     <div class="project-card hidden">
@@ -54,7 +52,6 @@
                     </div>
                 </div>
                 }
-            }
 
         </div>
         <br />

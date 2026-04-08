@@ -27,7 +27,15 @@
                 <a asp-controller="Dashboard" asp-action="EditProfile">
                     <img src="@(Model?.ProfileImagePath ?? "/uploads/Default-welcomer.png")" alt="Profile" class="avatar-img" />
                 </a>
-                <p class="profile-name">@Model?.Name</p>
+                @* <p class="profile-name">@Model?.Name (@Model?.Role)</p> *@
+                @if (Model?.Role == "ADMIN")
+                {
+                    <p class="profile-name">@Model.Name (Admin)</p>
+                }
+                else
+                {
+                    <p class="profile-name">@Model?.Name</p>
+                }
             </div>
 
             <ul>
