@@ -41,22 +41,6 @@ namespace loginpageusingmvc.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
-        {
-            var userid = HttpContext.Session.GetInt32("UserId");
-            if (userid == null) return RedirectToAction("login", "Account");
-            if (id == null)
-            {
-                return View(new Models.Project());
-            }
-            var project = await _context.UserProjects
-                        .FirstOrDefaultAsync(p => p.ProjectId == id && p.UserId == userid);
-
-            if (project == null) return NotFound();
-            return View(project);
-        }
-
         [HttpPost]
         public async Task<IActionResult> Edit(ProjectModeldto model, IFormFile image)
         {
@@ -87,20 +71,6 @@ namespace loginpageusingmvc.Controllers
 
                 _context.UserProjects.Add(newProject);
             }
-            else
-            {
-                // --- UPDATE MODE ---
-                existingProject.Title = model.Title;
-                existingProject.Description = model.Description;
-                existingProject.GithubUrl = model.GithubUrl;
-
-                if (image != null)
-                {
-                    existingProject.ImagePath = await SaveFile(image);
-                }
-
-                _context.UserProjects.Update(existingProject);
-            }
 
             // Only one save call needed at the end
             await _context.SaveChangesAsync();
@@ -113,12 +83,12 @@ namespace loginpageusingmvc.Controllers
             string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
 
             // Set the path to the wwwroot/uploads folder
-            string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+            string uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
 
             // Ensure the directory exists
-            if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
+            if (!Directory.Exists(uploads)) Directory.CreateDirectory(uploads);
 
-            string filePath = Path.Combine(uploadsFolder, fileName);
+            string filePath = Path.Combine(uploads, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
             {

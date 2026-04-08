@@ -21,3 +21,16 @@ function filterSkills(category) {
         }
     });
 }
+    document.addEventListener("DOMContentLoaded", function () {
+        const message = document.getElementById("statusMessage");
+    if (message) {
+        // Set the time limit (e.g., 3000ms = 3 seconds)
+        setTimeout(function () {
+            message.style.transition = "opacity 0.5s ease";
+            message.style.opacity = "0";
+
+            // Remove from layout after fade out
+            setTimeout(() => message.remove(), 500);
+        }, 3000); 
+        }
+    });

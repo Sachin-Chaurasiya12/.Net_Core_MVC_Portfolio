@@ -48,10 +48,13 @@ body {
         }
 
 /* Grid */
+/* Updated Grid for Responsiveness */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80%, 1fr));
-    gap: 25px;
+    /* This tells the browser: "Fit as many columns as possible, but cards must be at least 280px wide" */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
 }
 
 /* Card */
@@ -196,3 +199,118 @@ body {
         color: white;
         transform: translateY(-2px);
     }
+.Edit-btn {
+    position: fixed; /* Fixed keeps it in view even when scrolling */
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 20px;
+    background: rgba(30, 58, 138, 0.8); /* Navy with transparency */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    z-index: 2000; /* Higher than back-btn and grid */
+}
+
+    .Edit-btn:hover {
+        background: #1e3a8a; /* Solid navy */
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+/* On mobile, make the button smaller */
+@media (max-width: 768px) {
+    /* Push the whole section down so it doesn't overlap the top buttons */
+    .skills-section {
+        padding: 100px 15px 40px 15px !important;
+    }
+
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    /* Stack the filter buttons in two rows so they aren't tiny */
+    .filter-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 buttons per row */
+        gap: 10px;
+        padding: 0 20px;
+        margin-bottom: 30px;
+    }
+
+        .filter-buttons button {
+            width: 100%;
+            margin: 0;
+            padding: 12px;
+            font-size: 14px;
+        }
+}
+@media (max-width: 480px) {
+    .back-btn, .Edit-btn {
+        top: 10px; /* Bring them closer to the very top edge */
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+    /* Reduce the gap in the GitHub card so it doesn't look stretched */
+    .github-card {
+        padding: 30px 15px;
+        gap: 15px;
+    }
+
+    .github-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Keep stats in one row if possible */
+        gap: 5px;
+    }
+
+    .stat-number {
+        font-size: 16px;
+    }
+
+    .stat-label {
+        font-size: 10px;
+    }
+}
+.skills-grid {
+    display: flex;
+    flex-direction: column; /* Force single column on mobile */
+    gap: 15px;
+}
+
+/* On tablet and larger, switch back to grid */
+@media (min-width: 769px) {
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+.message-display {
+    margin-top: 20px;
+    padding: 12px;
+    background: rgba(30, 58, 138, 0.3); /* Transparent navy */
+    border: 1px solid #3b82f6;
+    color: #60a5fa;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

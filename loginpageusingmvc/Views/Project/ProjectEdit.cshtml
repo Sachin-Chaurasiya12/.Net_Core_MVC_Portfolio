@@ -53,11 +53,11 @@
                 <div class="preview-window">
                     @if (!string.IsNullOrEmpty(Model?.ImagePath))
                     {
-                        <img id="previewImage" src="/uploads/@Model.ImagePath" alt="Project Preview" />
+                        <img id="previewImage" src="@(!string.IsNullOrEmpty(Model?.ImagePath) ? "/uploads/" + Model.ImagePath : "/uploads/placeholder.png")" alt="Project Preview" />
                     }
                     else
                     {
-                        <img id="previewImage" src="/uploads/placeholder.png" alt="No Image Uploaded" />
+                        <img id="previewImage" src="/uploads/images.png" alt="No Image Uploaded" />
                     }
                 </div>
 

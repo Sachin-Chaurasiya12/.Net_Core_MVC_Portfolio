@@ -4,6 +4,7 @@
 @{
     Layout = null;
 }
+@model List<loginpageusingmvc.DTOs.SkillsReadDTO>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +13,21 @@
     <title>Skills</title>
     <link rel="stylesheet" href="/css/SkillStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 
 <body>
     <a asp-controller="Dashboard" asp-action="Index" class="back-btn">
     <i class="fas fa-arrow-left"></i>
     Back to Dashboard
-</a>
+    </a>
+    @if (ViewBag.Role?.ToString() == "ADMIN")
+    {
+        <a asp-controller="Skills" asp-action="SkillsAdd" class="Edit-btn">
+            Edit Skills
+            <i class="fas fa-edit"></i>
+        </a>        
+    }
     <section class="skills-section">
         <h1 class="section-title">My Skills</h1>
 
@@ -32,13 +41,14 @@
 
         <!-- Skills Grid -->
         <div class="skills-grid">
-
-            <div class="skill-card" data-category="frontend">
-                <div class="skill-name">HTML</div>
-                <div class="progress"><div class="progress-bar" data-skill="90"></div></div>
+            @foreach (var item in Model)
+            {
+                <div class="skill-card" data-category="@item.Category">
+                    <div class="skill-name">@item.Title</div>
+                <div class="progress"><div class="progress-bar" data-skill="@item.Percentage"></div></div>
             </div>
-
-            <div class="skill-card" data-category="frontend">
+            }
+            @* <div class="skill-card" data-category="frontend">
                 <div class="skill-name">CSS</div>
                 <div class="progress"><div class="progress-bar" data-skill="85"></div></div>
             </div>
@@ -71,7 +81,7 @@
             <div class="skill-card" data-category="backend">
                 <div class="skill-name">Java</div>
                 <div class="progress"><div class="progress-bar" data-skill="90"></div></div>
-            </div>
+            </div> *@
 
         </div>
     </section>

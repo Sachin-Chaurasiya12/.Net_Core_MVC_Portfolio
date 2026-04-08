@@ -153,7 +153,7 @@ body {
         transform: translateX(-5px);
     }
 .Edit-btn {
-    position: fixed;
+    position: absolute;
     top: 20px;
     Right: 20px;
     display: flex;
@@ -265,6 +265,7 @@ body {
 
 @media (max-width: 768px) {
     .footer-content {
+        width:100%;
         flex-direction: column;
         text-align: center;
     }
