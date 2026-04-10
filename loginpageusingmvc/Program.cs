@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using loginpageusingmvc.Data;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +29,18 @@ builder.Services.AddAuthentication(options =>
          Options.ClientSecret = "GOCSPX - uYx_XtghzsNiYyttxWntX82cdPyn";
      });
 
+builder.Services.AddAuthentication("MyCookieAuth")
+    .AddCookie("MyCookieAuth", options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+        options.SlidingExpiration = true;
+    });
+builder.Services.AddAntiforgery(options =>
+{
+    options.Cookie.SameSite = SameSiteMode.Lax; // Change from Strict to Lax
+    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,7 +53,10 @@ app.UseStaticFiles();
 app.UseSession();
 
 app.UseRouting();
+
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 app.MapControllerRoute(
     name: "default",
