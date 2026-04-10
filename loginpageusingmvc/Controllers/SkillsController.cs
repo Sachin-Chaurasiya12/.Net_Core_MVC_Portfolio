@@ -1,6 +1,7 @@
 ﻿using loginpageusingmvc.Data;
 using loginpageusingmvc.DTOs;
 using loginpageusingmvc.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -34,6 +35,8 @@ namespace loginpageusingmvc.Controllers
             }).ToList();
             return View(model);
         }
+
+        [Authorize(Roles ="ADMIN")]
         [HttpGet]
         public IActionResult SkillsAdd(){
             return View(); 

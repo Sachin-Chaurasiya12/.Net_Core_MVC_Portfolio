@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace loginpageusingmvc.Controllers
 {
+    [Authorize]
     [Route("Dashboard")]
     public class DashboradController : Controller
     {
@@ -12,7 +13,7 @@ namespace loginpageusingmvc.Controllers
         public DashboradController(AppDbContext context) {
             _context = context;
         }
-
+        [Authorize]
         [HttpGet("index")]
         public IActionResult Index()
         {
@@ -25,6 +26,7 @@ namespace loginpageusingmvc.Controllers
             var user = _context.Users.Find(userId.Value);
             return View(user);
         }
+        [Authorize]
         [HttpGet("EditProfile")]
         public IActionResult EditProfile()
         {

@@ -1,5 +1,6 @@
 ﻿using loginpageusingmvc.Data;
 using loginpageusingmvc.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace loginpageusingmvc.Controllers
             var user = _context.Users.Find(userId);
             if (user == null)
             {
+
                 // If session exists but user is deleted from DB, clear session and kick them out
                 HttpContext.Session.Clear();
                 return RedirectToAction("login", "Account");
@@ -33,6 +35,7 @@ namespace loginpageusingmvc.Controllers
             var allProjects = _context.UserProjects.ToList();
             return View(allProjects);
         }
+        [Authorize(Roles ="ADMIN")]
         [HttpGet]
         public IActionResult ProjectEdit()
         {
