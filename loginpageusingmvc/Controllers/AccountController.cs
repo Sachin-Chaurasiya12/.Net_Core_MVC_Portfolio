@@ -9,6 +9,9 @@ using BCrypt.Net;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Identity.Client;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using System.Threading.Tasks;
 
 namespace loginpageusingmvc.Controllers
 {
@@ -30,16 +33,28 @@ namespace loginpageusingmvc.Controllers
 
         // POST: Handle Login
         [HttpPost]
-        public IActionResult Login([FromBody]UserReadDTO model)
+        public async Task<IActionResult> Login([FromBody]UserReadDTO model)
         {
             var user = _context.Users.FirstOrDefault(u => u.Username == model.Email);
 
-            if (user != null)
+            if (user != null && BCrypt.Net.BCrypt.Verify(model.Password,user.Password))
             {
-                if (BCrypt.Net.BCrypt.Verify(model.Password,user.Password)){
-                    HttpContext.Session.SetInt32("UserId",user.Id);
-                    return Json(new { success = true });
-                }
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name,ClaimTypes.Email),
+                    new Claim(ClaimTypes.Role, user.Role ?? "User")
+                };
+
+                var identity = new ClaimsIdentity(claims,"MyCookieAuth");
+                var principal = new ClaimsPrincipal(identity);
+
+                await HttpContext.SignInAsync("MyCookieAuth", principal);
+
+                HttpContext.Session.SetInt32("UserId", user.Id);
+                HttpContext.Session.SetString("Username", user.Name);
+
+                return Json(new { success = true });
             }
             if (model == null)
             {
@@ -78,9 +93,11 @@ namespace loginpageusingmvc.Controllers
         }
         // Dashboard page after login
         [HttpGet]
-        public IActionResult LogOut()
+        public async Task<IActionResult> LogOut()
         {
             HttpContext.Session.Clear();
+
+            await HttpContext.SignOutAsync("MyCookieAuth");
             return RedirectToAction("login", "Account");
         }
         public IActionResult Index()

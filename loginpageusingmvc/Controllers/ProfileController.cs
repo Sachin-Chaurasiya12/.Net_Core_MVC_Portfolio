@@ -1,8 +1,10 @@
 ﻿using loginpageusingmvc.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace loginpageusingmvc.Controllers
 {
+    [Authorize]
     [Route("Profile")]
     public class ProfileController : Controller
     {
