@@ -17,17 +17,6 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = "Cookies";
-    options.DefaultChallengeScheme = "Google";
-})
-    .AddCookie("Cookies")
-    .AddGoogle("Google", Options =>
-     {
-         Options.ClientId = "263105868719-3lqrs294gal8vv43eemq0e3hrlnoisil.apps.googleusercontent.com";
-         Options.ClientSecret = "GOCSPX - uYx_XtghzsNiYyttxWntX82cdPyn";
-     });
 
 builder.Services.AddAuthentication("MyCookieAuth")
     .AddCookie("MyCookieAuth", options =>
