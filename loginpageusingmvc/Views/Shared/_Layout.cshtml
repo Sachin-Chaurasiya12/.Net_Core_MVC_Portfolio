@@ -8,14 +8,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/loginpageusingmvc.styles.css" asp-append-version="true" />
-
+    <link rel="stylesheet" href="/css/loader.css" asp-append-version="true" />
 </head>
 <body>
-    <div id="loader-wrapper">
-        <div class="terminal-loader">
-            <span class="code-text">&lt;SACHIN /&gt;</span>
-            <div class="cursor"></div>
-        </div>
+    <div id="globalLoader">
+        <div class="spinner"></div>
     </div>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -54,5 +51,13 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/script.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+            window.addEventListener("load", function () {
+                      document.getElementById("globalLoader").style.display = "none";
+        });
+        function showLoader() {
+            document.getElementById("globalLoader").style.display = "flex";
+        }
+    </script>
 </body>
 </html>

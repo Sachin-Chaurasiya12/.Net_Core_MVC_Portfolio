@@ -22,7 +22,6 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
-
 /* MAIN SECTION */
 .projects-section {
     flex: 1;
@@ -181,24 +180,27 @@ body {
         transform: translateX(-5px);
     }
 .rotate-arrow {
-    transform: rotate(180deg); /* change angle as needed */
+    transform: rotate(180deg);
     float:right;
 }
 
 /* FOOTER */
 .portfolio-footer {
     width: 100%;
-    position: relative;
-    z-index: 1;
+    margin-top: auto; 
+    background: var(--navy-mid); 
+    padding: 20px 0;
 }
 
+/* CONTENT */
 .footer-content {
     width: 100%;
-    padding: 0 40px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height:50%;
 }
 
 .footer-section h3 {

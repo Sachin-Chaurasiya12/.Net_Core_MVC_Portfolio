@@ -13,9 +13,8 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     fetch("/Account/login", {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json' // We are promising JSON...
+            'Content-Type': 'application/json' 
         },
-        // 2. ...so we must actually send a JSON string
         body: JSON.stringify({
             Email: email,
             Password: password
@@ -28,7 +27,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         })
         .then(data => {
             if (data.success) {
-                window.location.href = "/Dashboard/index"; // Added leading slash for safety
+                window.location.href = "/Dashboard/index";
             } else {
                 alert(data.message);
             }

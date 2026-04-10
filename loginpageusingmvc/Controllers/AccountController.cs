@@ -20,8 +20,6 @@ namespace loginpageusingmvc.Controllers
         {
             _context = context;
         }
-
-        // GET: Show Login Page
         [HttpGet]
         public IActionResult Login()
         {
@@ -76,7 +74,6 @@ namespace loginpageusingmvc.Controllers
 
             return Json(new { success = true });
         }
-        // Dashboard page after login
         [HttpGet]
         public IActionResult LogOut()
         {

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using loginpageusingmvc.Data;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,17 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Cookies";
+    options.DefaultChallengeScheme = "Google";
+})
+    .AddCookie("Cookies")
+    .AddGoogle("Google", Options =>
+     {
+         Options.ClientId = "263105868719-3lqrs294gal8vv43eemq0e3hrlnoisil.apps.googleusercontent.com";
+         Options.ClientSecret = "GOCSPX - uYx_XtghzsNiYyttxWntX82cdPyn";
+     });
 
 var app = builder.Build();
 
